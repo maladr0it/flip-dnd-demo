@@ -1,0 +1,9 @@
+.Droppable {
+  height: var(--tile-size);
+  width: var(--tile-size);
+  margin: auto;
+}
+
+.Droppable--highlighted {
+  background: #fae8e3;
+}

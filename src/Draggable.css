@@ -1,0 +1,14 @@
+.Draggable {
+  height: calc(var(--tile-size) - 1rem);
+  width: calc(var(--tile-size) - 1rem);
+  margin: auto;
+  background-color: tomato;
+  cursor: pointer;
+  user-select: none;
+  background-size: auto 100%;
+  background-position: center;
+}
+
+.Draggable--dragging {
+  opacity: 0;
+}

@@ -1,0 +1,13 @@
+.Grid {
+  --tile-size: 5rem;
+
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, var(--tile-size));
+  grid-auto-rows: var(--tile-size);
+  align-items: center;
+  justify-content: center;
+}
