@@ -13,7 +13,7 @@ interface Item {
   color: string;
 }
 
-const INITIAL_CARDS: Item[] = [...Array(100)].map((_, i) => ({
+const INITIAL_CARDS: Item[] = [...Array(8)].map((_, i) => ({
   id: i.toString(),
   color: "#" + ((Math.random() * 0xffffff) << 0).toString(16),
 }));
