@@ -7,14 +7,13 @@ import { CARD } from "./ItemTypes";
 interface Props {
   id: string;
   index: number;
-  imageUrl: string;
   color: string;
   onDragStart: (dragIndex: number) => void;
   onDragStop: () => void;
 }
 
 export const Draggable: React.FC<Props> = memo(
-  ({ id, index, imageUrl, color, onDragStart, onDragStop }) => {
+  ({ id, index, color, onDragStart, onDragStop }) => {
     const ref = useRef<HTMLDivElement>(null);
     const rect = useRef<DOMRect | ClientRect | null>(null);
 
@@ -64,7 +63,6 @@ export const Draggable: React.FC<Props> = memo(
         ref={ref}
         className={`Draggable ${isDragging ? "Draggable--dragging" : ""}`}
         style={{ backgroundColor: color }}
-        // style={{ backgroundImage: `url(${imageUrl})` }}
       >
         {id}
       </div>

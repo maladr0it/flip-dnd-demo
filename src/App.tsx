@@ -8,18 +8,13 @@ import { Grid } from "./Grid";
 import { Draggable } from "./Draggable";
 import { Droppable } from "./Droppable";
 
-import { gifs } from "./gifs";
-
 interface Item {
   id: string;
-  imageUrl: string;
   color: string;
 }
 
 const INITIAL_CARDS: Item[] = [...Array(100)].map((_, i) => ({
   id: i.toString(),
-  imageUrl: "",
-  // imageUrl: gifs[i],
   color: "#" + ((Math.random() * 0xffffff) << 0).toString(16),
 }));
 
@@ -61,7 +56,6 @@ const App: React.FC = () => {
               key={item.id}
               index={i}
               id={item.id}
-              imageUrl={item.imageUrl}
               color={item.color}
               onDragStart={handleDragStart}
               onDragStop={handleDragStop}
