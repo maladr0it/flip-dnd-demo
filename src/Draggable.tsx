@@ -1,4 +1,4 @@
-import React, { memo, useRef, useLayoutEffect } from "react";
+import React, { memo, useRef } from "react";
 import { useDrag, DragSourceMonitor } from "react-dnd";
 
 import "./Draggable.css";
@@ -15,7 +15,6 @@ interface Props {
 export const Draggable: React.FC<Props> = memo(
   ({ id, index, color, onDragStart, onDragStop }) => {
     const ref = useRef<HTMLDivElement>(null);
-    const rect = useRef<DOMRect | ClientRect | null>(null);
 
     const [{ isDragging }, drag] = useDrag({
       item: { id, type: CARD, index },
@@ -31,29 +30,6 @@ export const Draggable: React.FC<Props> = memo(
         onDragStop();
       },
     });
-
-    useLayoutEffect(() => {
-      if (ref.current && rect.current) {
-        const newRect = ref.current.getBoundingClientRect();
-        const dx = newRect.left - rect.current.left;
-        const dy = newRect.top - rect.current.top;
-
-        ref.current.animate(
-          [
-            { transform: `translate(${-dx}px, ${-dy}px)` },
-            { transform: `translate(0, 0)` },
-          ],
-          {
-            duration: 150,
-            easing: "ease-out",
-          },
-        );
-      }
-    }, [index]);
-
-    if (ref.current) {
-      rect.current = ref.current.getBoundingClientRect();
-    }
 
     // create ref callback from ref, to connect to the HTML dnd back-end
     drag(ref);
