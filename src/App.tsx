@@ -13,9 +13,11 @@ interface Item {
   color: string;
 }
 
+const randomColor = () => "#" + ((Math.random() * 0xffffff) << 0).toString(16);
+
 const INITIAL_CARDS: Item[] = [...Array(8)].map((_, i) => ({
   id: i.toString(),
-  color: "#" + ((Math.random() * 0xffffff) << 0).toString(16),
+  color: randomColor(),
 }));
 
 const App: React.FC = () => {
@@ -37,8 +39,16 @@ const App: React.FC = () => {
     dispatch({ type: "MOVE", from, to });
   }, []);
 
+  const handleItemAdd = () => {
+    const color = randomColor();
+    dispatch({ type: "ITEM_ADDED", to: 0, item: { id: color, color } });
+  };
+
   return (
     <DndProvider backend={HTML5Backend}>
+      <button className="App-addItemButton" onClick={handleItemAdd}>
+        ADD ITEM
+      </button>
       <div className="GridContainer">
         <Grid>
           {items.map((_, i) => (
