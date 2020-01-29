@@ -1,5 +1,5 @@
 .Grid {
-  --tile-size: 10rem;
+  --tile-size: 15rem;
 
   position: absolute;
   overflow-x: hidden;
