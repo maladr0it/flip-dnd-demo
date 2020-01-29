@@ -41,7 +41,11 @@ const App: React.FC = () => {
 
   const handleItemAdd = () => {
     const color = randomColor();
-    dispatch({ type: "ITEM_ADDED", to: 0, item: { id: color, color } });
+    dispatch({
+      type: "ITEM_ADDED",
+      to: 0,
+      item: { id: color.slice(4), color },
+    });
   };
 
   return (
